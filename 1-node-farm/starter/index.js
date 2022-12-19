@@ -31,15 +31,24 @@ const url = require('url');
 
 ///////////////////////////////////
 // SERVER
+<<<<<<< Updated upstream
 const replaceTemplate = (temp, product) => {
   let output = temp.replace(/{%PRODUCTNAME%}/g, product.productName);
   output = output.replace(/{%PRICE%}/g, product.price);
   output = output.replace(/{%IMAGE%}/g, product.image);
+=======
+
+const replaceTemplate = (temp, product) => {
+  let output = temp.replace(/{%PRODUCTNAME%}/g, product.productName);
+  output = output.replace(/{%IMAGE%}/g, product.image);
+  output = output.replace(/{%PRICE%}/g, product.price);
+>>>>>>> Stashed changes
   output = output.replace(/{%FROM%}/g, product.from);
   output = output.replace(/{%NUTRIENTS%}/g, product.nutrients);
   output = output.replace(/{%QUANTITY%}/g, product.quantity);
   output = output.replace(/{%DESCRIPTION%}/g, product.description);
   output = output.replace(/{%ID%}/g, product.id);
+<<<<<<< Updated upstream
   if (!product.organic) {
     output = output.replace(/{%NOT_ORGANIC%}/g, 'not-organic');
   }
@@ -47,18 +56,36 @@ const replaceTemplate = (temp, product) => {
   return output;
 };
 
+=======
+
+  if (!product.organic)
+    output = output.replace(/{%NOT_ORGANIC%}/g, 'not-organic');
+
+  return output;
+};
+>>>>>>> Stashed changes
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
   'utf-8'
 );
+<<<<<<< Updated upstream
 const tempProduct = fs.readFileSync(
   `${__dirname}/templates/template-product.html`,
   'utf-8'
 );
+=======
+>>>>>>> Stashed changes
 const tempCard = fs.readFileSync(
   `${__dirname}/templates/template-card.html`,
   'utf-8'
 );
+<<<<<<< Updated upstream
+=======
+const tempProduct = fs.readFileSync(
+  `${__dirname}/templates/template-product.html`,
+  'utf-8'
+);
+>>>>>>> Stashed changes
 
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8');
 
@@ -68,24 +95,42 @@ const server = http.createServer((req, res) => {
   console.log(req.url);
   // console.log(url.parse());
   const pathName = req.url;
+<<<<<<< Updated upstream
   // Overview Page
   if (pathName === '/' || pathName === '/overview') {
     res.writeHead(200, { 'content-type': 'text/html' });
+=======
+  // Overview page
+  if (pathName === '/' || pathName === '/overview') {
+    res.writeHead(200, { 'Content-type': 'text/html' });
+>>>>>>> Stashed changes
 
     const cardsHtml = dataObj
       .map((el) => replaceTemplate(tempCard, el))
       .join('');
+<<<<<<< Updated upstream
     console.log(cardsHtml);
+=======
+>>>>>>> Stashed changes
     const output = tempOverview.replace('{%PRODUCT_CARDS%}', cardsHtml);
     res.end(output);
 
     // Product page
   } else if (pathName === '/product') {
     res.end('This is the PRODUCT');
+<<<<<<< Updated upstream
     // API page
   } else if (pathName === '/api') {
     res.writeHead(200, { 'content-type': 'application/json' });
     res.end(data);
+=======
+
+    // API
+  } else if (pathName === '/api') {
+    res.writeHead(200, { 'content-type': 'application/json' });
+    res.end(data);
+
+>>>>>>> Stashed changes
     // Not found
   } else {
     res.writeHead(404, {
