@@ -2,14 +2,17 @@
   "name": "natours",
   "version": "1.0.0",
   "description": "Learning node.js, express and  mongoDB",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon server.js"
   },
   "author": "Lantium Chuang",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "g": "^2.0.1",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
   }
 }
